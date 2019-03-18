@@ -1,0 +1,5 @@
+@media ( --print ) {
+	html, body {
+		width: 1024px;
+	}
+}

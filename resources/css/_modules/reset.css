@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "icon";
+  src: url("./fonts/icon.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  font-size: 10px;
+}
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+cite,
+em,
+pre,
+img,
+small,
+strong,
+sub,
+sup,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+dialog,
+figure,
+footer,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: 500;
+  font-style: normal;
+  background: transparent;
+  box-sizing: border-box;
+  line-break: strict;
+  letter-spacing: 0.1rem;
+	color: #333;
+}
+body {
+  -webkit-text-size-adjust: none;
+  font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ",
+    Meiryo, "ＭＳ ゴシック", sans-serif;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff !important;
+  font-feature-settings: "palt";
+}
+
+li {
+  list-style-type: none;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+*:before *:after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(100, 100, 100, 0.5);
+  text-decoration: none;
+  color: $link-color;
+  box-sizing: border-box;
+}
+
+hr {
+  margin: 20px 0;
+  padding: 0;
+  border-color: #333;
+  border-style: solid;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  -webkit-app-region: no-drag;
+}
+input,
+select,
+button {
+  vertical-align: middle;
+  appearance: none;
+}

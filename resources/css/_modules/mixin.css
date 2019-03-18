@@ -1,0 +1,123 @@
+@define-mixin pc-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+}
+@define-mixin tab-wrap {
+  width: 80%;
+  margin: 0 auto;
+}
+@define-mixin smp-wrap {
+  width: 92%;
+  margin: 0 auto;
+}
+
+@define-mixin psr {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+@define-mixin psa {
+  position: absolute;
+  margin: auto;
+}
+
+@define-mixin iconset {
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 1em;
+  height: 1em;
+
+  font-family: "icon";
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+@define-mixin lastchild {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@define-mixin anime $target, $time, $value {
+  @if $value == "ease-in-sine" {
+    transition: $target $time cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+  @if $value == "ease-out-sine" {
+    transition: $target $time cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  @if $value == "ease-in-out-sine" {
+    transition: $target $time cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  }
+
+  @if $value == "ease-in-quad" {
+    transition: $target $time cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  }
+  @if $value == "ease-out-quad" {
+    transition: $target $time cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  @if $value == "ease-in-out-quad" {
+    transition: $target $time cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  @if $value == "ease-in-cubic" {
+    transition: $target $time cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  @if $value == "ease-out-cubic" {
+    transition: $target $time cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  @if $value == "ease-in-out-cubic" {
+    transition: $target $time cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  @if $value == "ease-in-quart" {
+    transition: $target $time cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+  @if $value == "ease-out-quart" {
+    transition: $target $time cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  @if $value == "ease-in-out-quart" {
+    transition: $target $time cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  @if $value == "ease-in-quint" {
+    transition: $target $time cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  }
+  @if $value == "ease-out-quint" {
+    transition: $target $time cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  @if $value == "ease-in-out-quint" {
+    transition: $target $time cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  @if $value == "ease-in-expo" {
+    transition: $target $time cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  }
+  @if $value == "ease-out-expo" {
+    transition: $target $time cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  @if $value == "ease-in-out-expo" {
+    transition: $target $time cubic-bezier(1, 0, 0, 1);
+  }
+
+  @if $value == "ease-in-circ" {
+    transition: $target $time cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  @if $value == "ease-out-circ" {
+    transition: $target $time cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  @if $value == "ease-in-out-circ" {
+    transition: $target $time cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  @if $value == "ease-in-back" {
+    transition: $target $time cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  @if $value == "ease-out-back" {
+    transition: $target $time cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  @if $value == "ease-in-out-back" {
+    transition: $target $time cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}

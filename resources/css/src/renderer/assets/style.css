@@ -1,0 +1,259 @@
+@charset "utf-8";
+
+@import "../../../_modules/_component.css";
+
+@import "../../../_modules/reset";
+
+body {
+  -webkit-app-region: drag;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+	grid-template-rows: 1fr;
+}
+
+#navigate-area {
+  width: 100%;
+  height: 100vh;
+  background-color: #F9FAFC;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25px 1fr 100px;
+  
+  box-shadow:0px 0px 3px 0px rgba(0,0,0,.16);
+  z-index: 10;
+
+  #title-bar-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    button {
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      
+      &:before {
+        display: block;
+        content: '';
+        letter-spacing: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+      }
+
+      &#close-btn:before {
+        background-color: #FF6058;
+      }
+      &#min-btn:before {
+        background-color: #FFBD2E;
+      }
+      &#max-btn:before {
+        background-color: #27CA41;
+      }
+    }
+  }
+
+  #tab-area {
+    padding: 10px;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    .button-block {
+      position: relative;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.active .router-button {
+        background-color: #fff;
+        border: 1px solid #E6E6E6;
+      }
+    }
+
+    .router-button {
+      display: block;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background-color: #F9FAFC;
+      position: relative;
+
+      &:before {
+        @mixin iconset;
+        content: '\e87d';
+        font-size: 18px;
+        color: #666;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+
+      &.router-link-active {
+        background-color: #333;
+
+        &:before {
+          color: #fff;
+        }
+      }
+    }
+
+    .tooltip {
+      width: 200px;
+      background-color: rgba(0,0,0, .4);
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+
+      position: absolute;
+      top: 0;
+      left: 40px;
+
+      p {
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .btn_delete {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: none;
+        background-color: #eee;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 10px;
+        margin: auto;
+
+        &:before {
+          @mixin iconset;
+          content: '\E872';
+          font-size: 16px;
+          color: #666;
+
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          margin: auto;
+        }
+      }
+
+    }
+    
+  }
+
+  #controler-area {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7px;
+
+    button {
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:before {
+        @mixin iconset;
+        font-size: 18px;
+        color: #66ABC4;
+        padding: 10px;
+      }
+
+      &#add-btn:before {
+        content: '\e145';
+      }
+      
+      &#clear-btn:before {
+        content: '\e872';
+      }
+    }
+  }
+
+  
+}
+
+#browese-area {
+  width: 100%;
+  height: 100vh;
+  -webkit-app-region: no-drag;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  #webview-area {
+    width: 100%;
+    height: 100%;
+  }
+
+  webview {
+    width: 100%;
+    height: 100vh;
+    -webkit-app-region: no-drag;
+
+    * {
+      width: 100%;
+      height: 100vh;
+    }
+  }
+}
+
+#init-area {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+
+  &.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .discription {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  input {
+    border: 1px solid #eee;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+}
