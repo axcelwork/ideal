@@ -1,14 +1,14 @@
 <template>
   <div class="button-block" :class="active">
-    <button class="router-button" @click="link" v-model="id"></button>
-    <!-- <div class="tooltip">
-      <p>{{id}}</p>
-      <button class="btn_delete"></button>
-    </div>-->
+    <button class="router-button" :data-iconID="icon" @click="link" v-model="id"></button>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import EventHub from '../../plugin/EventHub'
+Vue.use(EventHub);
+
 const storage = require("electron-json-storage");
 let confg_data = [];
 
@@ -16,7 +16,9 @@ export default {
   props: {
     id: String,
     title: String,
-    value: String
+    value: String,
+    url: String,
+    icon: String,
   },
   computed: {
     active() {
@@ -25,10 +27,16 @@ export default {
   },
   methods: {
     link() {
-      this.$store.dispatch("set_tab_index", { index: this.id });
-      this.$emit('input', this.id)
+      // console.log(this.id);
+      // console.log(this.url);
 
-      console.log(this.$store.state.tab.index);
+      this.$eventHub.$emit('change_nav', this.id)
+      this.$router.push('/web/');
+
+      // this.$store.dispatch("set_tab_index", { index: this.id });
+      // this.$emit('input', this.id)
+
+      // console.log(this.$store.state.tab.index);
       
     }
   }

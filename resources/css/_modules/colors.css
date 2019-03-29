@@ -1,26 +1,20 @@
-$color_white: #FFF;
-$color_light_white_smoke: #F9F9F9;
-$color_white_Smoke: #F5F5F5;
-$color_revell: #EEEEEE;
-$color_smoke_grey: #E6E6E6;
-$color_light_grey: #DDDDDD;
-$color_grey: #CCCCCC;
-$color_wii: #999999;
-$color_dark_grey: #666666;
-$color_high_dark_grey: #333333;
-
-$color_cloud: #E0E6ED;
-$color_ice: #F9FAFC;
-
-$color_positive: #F2D06B;
-
-
-
+$nt1-color: #FFFFFF;
+$nt2-color: #FAFAFA;
+$nt3-color: #F2F2F2;
+$nt4-color: #DEDEDE;
+$nt5-color: #CCCCCC;
+$nt6-color: #999999;
+$nt7-color: #707070;
+$nt8-color: #333333;
+$nt9-color: #000000;
 /* Key 明るい */
-$key-light-color: #EB7000;
+$key-light-color: #E3F4FF;
 /* Key 通常 */
-$key-color: #EB5505;
-
+$key-color: #50A7F2;
+/* Key 暗い */
+$key-low-color: #438CCC;
+/* Key Special */
+$key-sp-color: #F0AD4E;
 /* 良い状態 */
 $good1-color: #98E1B3;
 /* 良い状態 */
@@ -38,3 +32,20 @@ $link-color: #1972BF;
 
 /* フォーム内のフォントサイズ */
 $form-font-size: 1.4rem;
+
+
+$color_white: #FFF;
+$color_light_white_smoke: #F9F9F9;
+$color_white_Smoke: #F5F5F5;
+$color_revell: #EEEEEE;
+$color_smoke_grey: #E6E6E6;
+$color_light_grey: #DDDDDD;
+$color_grey: #CCCCCC;
+$color_wii: #999999;
+$color_dark_grey: #666666;
+$color_high_dark_grey: #333333;
+
+$color_cloud: #E0E6ED;
+$color_ice: #F9FAFC;
+
+$color_positive: #F2D06B;

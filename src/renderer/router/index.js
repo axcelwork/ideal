@@ -11,9 +11,15 @@ export default new Router({
       component: require('@/components/LandingPage').default
     },
     {
-      path: '/web/:id',
+      path: '/web/',
       name: 'web-page',
-      component: require('@/components/ui/WebView').default
+      component: require('@/components/WebPage').default,
+      props: true
+    },
+    {
+      path: '/setting',
+      name: 'setting-page',
+      component: require('@/components/WebPage').default
     },
     {
       path: '*',

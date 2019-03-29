@@ -63,8 +63,7 @@ section {
 }
 body {
   -webkit-text-size-adjust: none;
-  font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ",
-    Meiryo, "ＭＳ ゴシック", sans-serif;
+   font-family: '游ゴシック体',YuGothic,'游ゴシック Medium','Yu Gothic Medium','游ゴシック',Yu Gothic,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ',Meiryo,'ＭＳ ゴシック',sans-serif;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   background-color: #fff !important;

@@ -8,21 +8,28 @@
       </div>
 
       <div id="tab-area">
-        <navbutton v-for="nav in nav_elements" v-bind="nav" :key="nav.id" v-model="currentId"></navbutton>
+        <navbutton v-for="nav in nav_elements" v-bind="nav" v-model="currentId"></navbutton>
       </div>
 
       <div id="controler-area">
+        <button id="reload-btn" @click="reload"></button>
         <button id="add-btn" @click="add"></button>
         <button id="clear-btn" @click="clear"></button>
+        <button id="setting-btn" @click="clear"></button>
       </div>
     </nav>
 
+
     <div id="browese-area">
+      <router-view></router-view>
+    </div>
+    
+    <!-- <div id="browese-area">
       <landing @event-init="createMenu" v-show="landing_show"></landing>
       <div id="webview-area" v-show="state">
         <tab v-for="tab in tab_elements" v-bind="tab" :key="tab.id" v-model="currentId"></tab>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -48,26 +55,13 @@ export default {
   data() {
     return {
       currentId: null,
-      nav_elements: [],
-      tab_elements: [],
-      landing_show: 0,
-      add_show: 0,
-      tab_show: 0,
-      show: 0
+      nav_elements: []
     };
   },
   mounted: function() {
     this.createMenu();
-  },
-  created() {
-    console.log('created');
-    
-    const unwatch = this.$store.watch(
-      state => state.index,
-      index => {
-        console.log('index:', index)
-      }
-    )
+    this.$eventHub.$on('save-addView', this.createMenu)
+    this.$eventHub.$on('change_nav', this.changeNav)
   },
   computed: {
     state() {
@@ -76,6 +70,10 @@ export default {
     }
   },
   methods: {
+    changeNav: function(id){
+      // console.log(id);
+      this.currentId = id;
+    },
     createMenu() {
       let that = this;
       storage.has("config", function(error, hasKey) {
@@ -88,36 +86,24 @@ export default {
             // console.log(data);
 
             that.nav_elements = [];
-            that.tab_elements = [];
 
             for (let value in data) {
               that.nav_elements.push({
                 id: data[value].id,
                 title: "サンプル",
-                url: data[value].id
-              });
-              that.tab_elements.push({
-                id: data[value].id,
-                title: "サンプル",
+                host: data[value].host,
                 url: data[value].url,
-                partition: 'persist:' + data[value].id,
+                icon: data[value].icon
               });
             }
 
             // このままやと作るたびにタブが1番目になるから初期値みてどうのこうのする
-            console.log(that.$store.state.tab.index);
+            // console.log(that.$store.state.tab.index);
             
-
             that.currentId = data[0].id;
           });
-
-          that.landing_show = 0;
-          that.tab_show = 1;
-
         }
         else {
-          that.tab_show = 0;
-          that.landing_show = 1;
         }
       });
     },
@@ -137,10 +123,11 @@ export default {
         window.unmaximize();
       }
     },
-    
+    reload() {
+      const window = remote.getCurrentWindow();
+      window.reload();
+    },
     add() {
-      this.landing_show = 1;
-      this.tab_show = 0;
       this.currentId = null;
     },
     clear() {
@@ -149,13 +136,9 @@ export default {
       storage.remove("config", function(error) {
         if (error) throw error;
 
-        that.nav_elements = [];
-        that.tab_elements = [];
-
-        that.landing_show = 1;
+        that.nav_elements = null;
 
         that.currentId = null;
-
         that.$router.push('/');
       });
     }

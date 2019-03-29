@@ -3,7 +3,7 @@ module.exports = () => ({
     'postcss-import': {}
     , 'postcss-mixins': {}
     , 'autoprefixer': {
-      browsers: "last 4 versions",
+      browsers: "last 1 versions",
       grid: "autoplace"
     }
     , 'precss': {}
