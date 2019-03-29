@@ -268,7 +268,6 @@ body {
   .discription {
     font-size: 24px;
     margin-bottom: 40px;
-    text-align: center;
   }
 
   input {
@@ -288,7 +287,6 @@ body {
     border: 1px solid #DFE5F2;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 40px;
 
     & > ul {
       display: flex;
@@ -316,6 +314,23 @@ body {
       }
 
     }
+  }
+
+  .form-control-feedback {
+    background-color: #F26B6B;
+    margin-top: 20px;
+    border-radius: 3px;
+    padding: 15px;
+
+    p {
+      font-size: 14px;
+      color: #fff;
+      text-align: left;
+    }
+  }
+
+  #add_webview {
+    margin-top: 40px;
   }
 }
 
@@ -1772,201 +1787,6 @@ body {
 }
 .id_pt40 {
   padding-top: 40px;
-}
-
-@media (--pc-view) {
-  .id_button:not(.is-tx):not(.is-select) {
-    &:hover {
-      background-color: #f2f2f2;
-    }
-
-    &.is-primary {
-      &:hover {
-        background-color: #2f83cc;
-        border-color: #2f83cc;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #2f83cc;
-            border-color: #2f83cc;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-    &.is-active {
-      &:hover {
-        background-color: #d69131;
-        border-color: #d69131;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #d69131;
-            border-color: #d69131;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-    &.is-imp {
-      &:hover {
-        background-color: #d93232;
-        border-color: #d93232;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #d93232;
-            border-color: #d93232;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-    &.is-func {
-      &:hover {
-        background-color: #4e7087;
-        border-color: #4e7087;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #4e7087;
-            border-color: #4e7087;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-  }
-
-  .id_row_right {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    grid-template-rows: 1fr;
-
-    & > .col-1 {
-      grid-column: 1;
-      padding-right: 30px;
-    }
-    & > .col-2 {
-      grid-column: 2;
-    }
-  }
-
-  .id_row_left {
-    display: grid;
-    grid-template-columns: 238px 1fr;
-    grid-template-rows: 1fr;
-
-    & > .col-1 {
-      grid-column: 1;
-      padding-right: 38px;
-    }
-    & > .col-2 {
-      grid-column: 2;
-    }
-  }
-  .id_row_half {
-    display: grid;
-    grid-template-columns: 0.5fr 0.5fr;
-    grid-template-rows: 1fr;
-
-    & > .col-1 {
-      grid-column: 1;
-      padding-right: 10px;
-    }
-    & > .col-2 {
-      grid-column: 2;
-      padding-left: 10px;
-    }
-  }
-}
-@media (--tab-view) {
-  .id_button:not(.is-tx):not(.is-select) {
-    &:active {
-      background-color: #f2f2f2;
-    }
-
-    &.is-primary {
-      &:active {
-        background-color: #2f83cc;
-        border-color: #2f83cc;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #2f83cc;
-            border-color: #2f83cc;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-    &.is-active {
-      &:active {
-        background-color: #d69131;
-        border-color: #d69131;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #d69131;
-            border-color: #d69131;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-    &.is-imp {
-      &:active {
-        background-color: #d93232;
-        border-color: #d93232;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #d93232;
-            border-color: #d93232;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-    &.is-func {
-      &:active {
-        background-color: #4e7087;
-        border-color: #4e7087;
-
-        &.is-only {
-          border-color: transparent;
-          background-color: transparent;
-
-          &:before {
-            background-color: #4e7087;
-            border-color: #4e7087;
-            color: $nt1-color;
-          }
-        }
-      }
-    }
-  }
 }
 
 @keyframes spinAround {

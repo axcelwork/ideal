@@ -1,12 +1,9 @@
 <template>
   <div id="init-area" class="show">
     <p class="discription">最初のアプリケーションを登録してみましょう</p>
-    <div class="form-control-feedback" v-show="errors.has('app[title]')">
-      <p class="alert alert-danger">{{ errors.first('app[title]') }}</p>
-    </div>
     <input
       type="text"
-      name="URL"
+      name="アプリケーションURL"
       id="init_url"
       placeholder="URLを入力してください"
       v-model="url"
@@ -19,6 +16,11 @@
         </li>
       </ul>
     </div>
+    
+    <div class="form-control-feedback" v-show="errors.has('アプリケーションURL')">
+      <p class="alert alert-danger">{{ errors.first('アプリケーションURL') }}</p>
+    </div>
+
     <button id="add_webview" @click="add" class="id_button is-primary">Webアプリを追加する</button>
   </div>
 </template>
