@@ -35,7 +35,6 @@ export default {
             for (let value in data) {
               that.tab_elements.push({
                 id: data[value].id,
-                title: "サンプル",
                 href: data[value].url,
                 partition: 'persist:' + data[value].id,
               });

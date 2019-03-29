@@ -1,5 +1,5 @@
 <template>
-  <div id="init-area" class="show">
+  <div id="init-area">
     <p class="discription">アプリケーションを登録してみましょう</p>
     <input
       type="text"

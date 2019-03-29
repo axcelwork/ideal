@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/setting',
       name: 'setting-page',
-      component: require('@/components/WebPage').default
+      component: require('@/components/SettingPage').default
     },
     {
       path: '*',

@@ -15,7 +15,7 @@
         <button id="reload-btn" @click="reload"></button>
         <button id="add-btn" @click="add"></button>
         <button id="clear-btn" @click="clear"></button>
-        <button id="setting-btn" @click="clear"></button>
+        <button id="setting-btn" @click="setting"></button>
       </div>
     </nav>
 
@@ -119,6 +119,10 @@ export default {
     add() {
       this.currentId = null;
       this.$router.push('/');
+    },
+    setting() {
+      this.currentId = null;
+      this.$router.push('/setting/');
     },
     clear() {
       let that = this;
