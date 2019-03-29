@@ -1,6 +1,6 @@
 <template>
   <div id="init-area" class="show">
-    <p class="discription">最初のアプリケーションを登録してみましょう</p>
+    <p class="discription">アプリケーションを登録してみましょう</p>
     <input
       type="text"
       name="アプリケーションURL"

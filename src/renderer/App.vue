@@ -19,26 +19,16 @@
       </div>
     </nav>
 
-
     <div id="browese-area">
       <router-view></router-view>
     </div>
-    
-    <!-- <div id="browese-area">
-      <landing @event-init="createMenu" v-show="landing_show"></landing>
-      <div id="webview-area" v-show="state">
-        <tab v-for="tab in tab_elements" v-bind="tab" :key="tab.id" v-model="currentId"></tab>
-      </div>
-    </div> -->
-
   </div>
 </template>
 
 <script>
 import navbutton from "./components/ui/nav_button";
 import tab from "./components/ui/WebView";
-import landing from "./components/LandingPage";
-import add from "./components/AddPage";
+import landing from "./components/LandingPage"
 
 const remote = require("electron").remote;
 const BrowserWindow = remote.BrowserWindow;
@@ -50,7 +40,6 @@ export default {
     navbutton,
     tab,
     landing,
-    add
   },
   data() {
     return {
@@ -129,6 +118,7 @@ export default {
     },
     add() {
       this.currentId = null;
+      this.$router.push('/');
     },
     clear() {
       let that = this;
