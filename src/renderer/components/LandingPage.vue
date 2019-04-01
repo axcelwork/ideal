@@ -268,6 +268,9 @@ export default {
           }
         });
       });
+    },
+    beforeDestroy: function() {
+      this.$eventHub.$off("init_selected_icon", this.selected);
     }
   }
 };

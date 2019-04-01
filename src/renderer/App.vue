@@ -54,9 +54,6 @@ export default {
   },
   computed: {
     state() {
-      this.currentId === null
-        ? (this.landing_show = 1)
-        : (this.landing_show = 0);
       return this.currentId === null ? 0 : 1;
     }
   },
@@ -82,8 +79,6 @@ export default {
 
         if (hasKey) {
           storage.get("config", function(error, data) {
-            // console.log(data);
-
             that.nav_elements = [];
 
             for (let value in data) {
