@@ -9,9 +9,6 @@ import Vue from "vue";
 import EventHub from '../../plugin/EventHub'
 Vue.use(EventHub);
 
-const storage = require("electron-json-storage");
-let confg_data = [];
-
 export default {
   props: {
     id: String,
@@ -27,17 +24,7 @@ export default {
   },
   methods: {
     link() {
-      // console.log(this.id);
-      // console.log(this.url);
-
       this.$eventHub.$emit('change_nav', this.id)
-      this.$router.push('/web/');
-
-      // this.$store.dispatch("set_tab_index", { index: this.id });
-      // this.$emit('input', this.id)
-
-      // console.log(this.$store.state.tab.index);
-      
     }
   }
 };

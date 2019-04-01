@@ -10,6 +10,7 @@ Vue.use(EventHub);
 export default {
   props: {
     id: String,
+    title:String,
     value: String,
   },
   computed: {
@@ -19,7 +20,7 @@ export default {
   },
   methods: {
     icon_select() {
-      this.$eventHub.$emit('init_selected_icon', this.id)
+      this.$eventHub.$emit('init_selected_icon', {id: this.id, title: this.title})
     }
   }
 };

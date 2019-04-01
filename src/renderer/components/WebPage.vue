@@ -17,38 +17,53 @@ export default {
   data() {
     return {
       currentId: null,
-      tab_elements: [],
+      tab_elements: []
     };
   },
   mounted: function() {
-    this.$eventHub.$on('change_nav', this.changeNav)
-
     let that = this;
 
+    storage.has("tab_index", function(error, hasKey) {
+      if (error) throw error;
+
+      if (hasKey) {
+        storage.get("tab_index", function(error, data) {
+          that.currentId = data;
+        });
+      }
+    });
+
+    this.$eventHub.$on("change_nav", this.changeCurrent);
+
+
     storage.has("config", function(error, hasKey) {
-        if (error) throw error;
-        
-        if (hasKey) {
-          storage.get("config", function(error, data) {
-            that.tab_elements = [];
+      if (error) throw error;
 
-            for (let value in data) {
-              that.tab_elements.push({
-                id: data[value].id,
-                href: data[value].url,
-                partition: 'persist:' + data[value].id,
-              });
-            }
+      if (hasKey) {
+        storage.get("config", function(error, data) {
+          that.tab_elements = [];
 
-            that.currentId = data[0].id;
-          });
-        }
-      });
+          for (let value in data) {
+            that.tab_elements.push({
+              id: data[value].id,
+              href: data[value].url,
+              partition: "persist:" + data[value].id
+            });
+          }
+
+          that.currentId = data[0].id;
+        });
+      }
+    });
   },
   methods: {
-    changeNav: function(id){
+    changeCurrent: function(id) {
       this.currentId = id;
+      // console.log(this.currentId);
     }
+  },
+  beforeDestroy: function() {
+    this.$eventHub.$off("change_nav", this.changeCurrent);
   }
 };
 </script>

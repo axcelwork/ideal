@@ -3,9 +3,6 @@
 </template>
 
 <script>
-const storage = require("electron-json-storage");
-let confg_data = [];
-
 export default {
   props: {
     id: String,

@@ -28,7 +28,7 @@
 <script>
 import navbutton from "./components/ui/nav_button";
 import tab from "./components/ui/WebView";
-import landing from "./components/LandingPage"
+import landing from "./components/LandingPage";
 
 const remote = require("electron").remote;
 const BrowserWindow = remote.BrowserWindow;
@@ -39,7 +39,7 @@ export default {
   components: {
     navbutton,
     tab,
-    landing,
+    landing
   },
   data() {
     return {
@@ -49,19 +49,29 @@ export default {
   },
   mounted: function() {
     this.createMenu();
-    this.$eventHub.$on('save-addView', this.createMenu)
-    this.$eventHub.$on('change_nav', this.changeNav)
+    this.$eventHub.$on("save-addView", this.createMenu);
+    this.$eventHub.$on("change_nav", this.changeNav);
   },
   computed: {
     state() {
-      this.currentId === null ? this.landing_show = 1 : this.landing_show = 0
-      return this.currentId === null ? 0 : 1
+      this.currentId === null
+        ? (this.landing_show = 1)
+        : (this.landing_show = 0);
+      return this.currentId === null ? 0 : 1;
     }
   },
   methods: {
-    changeNav: function(id){
+    changeNav: function(id) {
       // console.log(id);
       this.currentId = id;
+
+      if (this.$router.currentRoute.fullPath != "/web/") {
+        this.$router.push("/web/");
+      }
+
+      storage.set("tab_index", id, function(error) {
+        if (error) throw error;
+      });
     },
     createMenu() {
       let that = this;
@@ -88,11 +98,10 @@ export default {
 
             // このままやと作るたびにタブが1番目になるから初期値みてどうのこうのする
             // console.log(that.$store.state.tab.index);
-            
+
             that.currentId = data[0].id;
           });
-        }
-        else {
+        } else {
         }
       });
     },
@@ -118,11 +127,11 @@ export default {
     },
     add() {
       this.currentId = null;
-      this.$router.push('/');
+      this.$router.push("/");
     },
     setting() {
       this.currentId = null;
-      this.$router.push('/setting/');
+      this.$router.push("/setting/");
     },
     clear() {
       let that = this;
@@ -133,7 +142,7 @@ export default {
         that.nav_elements = null;
 
         that.currentId = null;
-        that.$router.push('/');
+        that.$router.push("/");
       });
     }
   }
