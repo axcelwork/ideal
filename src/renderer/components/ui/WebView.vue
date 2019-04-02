@@ -3,7 +3,17 @@
 </template>
 
 <script>
+const fs = require('fs');
+const path = require('path');
+const shell = require("electron");
+
 export default {
+  data() {
+    return {
+      target_id: String,
+      target_webview: null
+    };
+  },
   props: {
     id: String,
     title: String,
@@ -11,9 +21,29 @@ export default {
     href: String,
     partition: String
   },
+  mounted: function() {
+    var that = this;
+    this.target_id = this.id;
+    this.target_webview = document.getElementById(this.target_id);
+
+    this.target_webview.addEventListener("new-window", function(e) {
+      shell.shell.openExternal(e.url);
+    });
+    this.target_webview.addEventListener("dom-ready", function() {
+      
+      that.target_webview.openDevTools();
+
+      fs.readFile( path.resolve(path.resolve(__dirname, '../../assets/in_circle_ex_style.css')), "utf-8", function(error, data) {
+        if(!error){
+          that.target_webview.insertCSS(data);
+        }
+      });
+
+    });
+  },
   computed: {
     active() {
-      return this.value === this.id ? '1' : 0
+      return this.value === this.id ? "1" : 0;
     }
   }
 };

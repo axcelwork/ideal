@@ -34,6 +34,9 @@ const remote = require("electron").remote;
 const BrowserWindow = remote.BrowserWindow;
 const storage = require("electron-json-storage");
 
+const Menu = remote.Menu;
+const MenuItem = remote.MenuItem;
+
 export default {
   name: "ideal",
   components: {
@@ -51,6 +54,15 @@ export default {
     this.createMenu();
     this.$eventHub.$on("save-addView", this.createMenu);
     this.$eventHub.$on("change_nav", this.changeNav);
+
+    // サブメニューの作成
+    var menu = new Menu();
+    menu.append(new MenuItem({ label: 'Open Default Browser', click: function() { console.log('item 1 clicked'); } }));
+    window.addEventListener( "contextmenu", function(e) {
+        e.preventDefault();
+        menu.popup(remote.getCurrentWindow());
+      }, false
+    );
   },
   computed: {
     state() {
