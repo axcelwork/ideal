@@ -50,7 +50,9 @@ const templateMenu = [
       { role: 'zoomin', },
       { role: 'zoomout', },
       { type: 'separator', },
-      { role: 'togglefullscreen', }
+      { role: 'togglefullscreen', },
+      { type: 'separator', },
+      { role: 'toggledevtools', }
     ]
   }
 ];
