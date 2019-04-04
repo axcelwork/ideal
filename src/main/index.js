@@ -1,6 +1,9 @@
 import { app, Menu, BrowserWindow } from 'electron'
 import '../renderer/store'
 
+const path = require('path');
+const fs = require("fs");
+
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -58,22 +61,42 @@ const templateMenu = [
 ];
 
 
+//-> ウィンドウサイズを保存するファイル
+let boundsFile = path.join(
+  app.getPath('userData'), 'bounds.json'
+);
+//-> 保存しておいたウィンドウサイズの取得
+let bounds = null;
+try {
+  bounds = JSON.parse(
+    fs.readFileSync(boundsFile, 'utf8')
+  );
+} catch (e) {
+  bounds = { "width": 1024, "height": 768 };
+}
 
 function createWindow () {
   /**
    * Initial window options
    */
-  mainWindow = new BrowserWindow({
-    height: 700,
-    useContentSize: true,
-    width: 1200,
-    frame: false
-  })
+
+  mainWindow = new BrowserWindow(Object.assign(
+    bounds, {
+      useContentSize: true,
+      frame: false
+    }
+  ));
 
   mainWindow.loadURL(winURL)
 
   const menu = Menu.buildFromTemplate(templateMenu);
   Menu.setApplicationMenu(menu);
+
+  mainWindow.on('close', () => {
+    fs.writeFileSync(
+      boundsFile, JSON.stringify(mainWindow.getBounds())
+    );
+  });
 
   mainWindow.on('closed', () => {
     mainWindow = null
