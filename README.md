@@ -1,5 +1,5 @@
 <div align="center">
-<img width="490" alt="ロゴ" src="https://user-images.githubusercontent.com/305371/56190527-570ddb00-6065-11e9-9979-f2a77cf5b365.png">
+<img width="320" alt="ロゴ" src="https://user-images.githubusercontent.com/305371/56190527-570ddb00-6065-11e9-9979-f2a77cf5b365.png">
 </div>
 
 # ideal
