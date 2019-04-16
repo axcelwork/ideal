@@ -1,6 +1,8 @@
 <template>
-  <div id="webview-area" class="webview-area">
-    <tab v-for="tab in tab_elements" v-bind="tab" v-model="currentId"></tab>
+  <div id="browese-area">
+    <div id="webview-area" class="webview-area">
+      <tab v-for="tab in tab_elements" v-bind="tab" v-model="currentId"></tab>
+    </div>
   </div>
 </template>
 

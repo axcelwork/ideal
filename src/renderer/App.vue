@@ -19,9 +19,9 @@
       </div>
     </nav>
 
-    <div id="browese-area">
+    <!-- <div id="browese-area"> -->
       <router-view></router-view>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -51,9 +51,12 @@ export default {
     };
   },
   mounted: function() {
+    console.log('#2');
+    
     this.createMenu();
     this.$eventHub.$on("save-addView", this.createMenu);
     this.$eventHub.$on("change_nav", this.changeNav);
+    this.$eventHub.$on("delete_app", this.updateMenu);
 
     // サブメニューの作成
     var menu = new Menu();
@@ -84,32 +87,44 @@ export default {
     },
     createMenu() {
       let that = this;
-      storage.has("config", function(error, hasKey) {
-        if (error) throw error;
+      storage.get("config", function(error, data) {
+        if( data.length != 0 ) {
+          that.nav_elements = [];
 
-        // console.log(hasKey);
+          for (let value in data) {
+            that.nav_elements.push({
+              id: data[value].id,
+              title: "サンプル",
+              host: data[value].host,
+              url: data[value].url,
+              icon: data[value].icon
+            });
+          }
 
-        if (hasKey) {
-          storage.get("config", function(error, data) {
-            that.nav_elements = [];
-
-            for (let value in data) {
-              that.nav_elements.push({
-                id: data[value].id,
-                title: "サンプル",
-                host: data[value].host,
-                url: data[value].url,
-                icon: data[value].icon
-              });
-            }
-
-            // このままやと作るたびにタブが1番目になるから初期値みてどうのこうのする
-            // console.log(that.$store.state.tab.index);
-
-            that.currentId = data[0].id;
-          });
-        } else {
+          that.currentId = data[0].id;
         }
+        
+      });
+    },
+    updateMenu() {
+      let that = this;
+      storage.get("config", function(error, data) {
+        that.nav_elements = [];
+        
+        if( data.length != 0 ) {
+          that.nav_elements = [];
+
+          for (let value in data) {
+            that.nav_elements.push({
+              id: data[value].id,
+              title: "サンプル",
+              host: data[value].host,
+              url: data[value].url,
+              icon: data[value].icon
+            });
+          }
+        }
+        
       });
     },
     close() {

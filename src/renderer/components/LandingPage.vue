@@ -1,28 +1,30 @@
 <template>
-  <div id="init-area">
-    <p class="discription">アプリケーションを登録してみましょう</p>
-    <input
-      type="text"
-      name="アプリケーションURL"
-      id="init_url"
-      placeholder="URLを入力してください"
-      v-model="url"
-      v-validate="'required|url:false'"
-    >
-    <div class="icon-area">
-      <p class="icon_title">{{iconTitle}}</p>
-      <ul>
-        <li v-for="icon in icon_elements">
-          <iconButton v-bind="icon" :key="icon.id" v-model="selectId"></iconButton>
-        </li>
-      </ul>
-    </div>
+  <div id="browese-area">
+    <div id="init-area">
+      <p class="discription">アプリケーションを登録してみましょう</p>
+      <input
+        type="text"
+        name="アプリケーションURL"
+        id="init_url"
+        placeholder="URLを入力してください"
+        v-model="url"
+        v-validate="'required|url:false'"
+      >
+      <div class="icon-area">
+        <p class="icon_title">{{iconTitle}}</p>
+        <ul>
+          <li v-for="icon in icon_elements">
+            <iconButton v-bind="icon" :key="icon.id" v-model="selectId"></iconButton>
+          </li>
+        </ul>
+      </div>
 
-    <div class="form-control-feedback" v-show="errors.has('アプリケーションURL')">
-      <p class="alert alert-danger">{{ errors.first('アプリケーションURL') }}</p>
-    </div>
+      <div class="form-control-feedback" v-show="errors.has('アプリケーションURL')">
+        <p class="alert alert-danger">{{ errors.first('アプリケーションURL') }}</p>
+      </div>
 
-    <button id="add_webview" @click="add" class="id_button is-primary">Webアプリを追加する</button>
+      <button id="add_webview" @click="add" class="id_button is-primary">Webアプリを追加する</button>
+    </div>
   </div>
 </template>
 
